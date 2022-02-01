@@ -13,13 +13,13 @@ class SimpleReport:
         companies = [item["nome_da_empresa"] for item in prod_list]
         oldest_prod = cls.get_oldest_date(fab_dates)
         nearest_expired = cls.get_nearest_expiration_date(exp_dates)
-        stck = cls.get_largest_stock(companies)
-        oldest = f"Data de fabricação mais antiga: {oldest_prod}\n"
-        nearest = f"Data de validade mais próxima: {nearest_expired}\n"
-        lrgst = f"Empresa com maior quantidade de produtos estocados: {stck}\n"
-        report_string = oldest + nearest + lrgst
+        stock = cls.get_largest_stock(companies)
+        r_1 = f"Data de fabricação mais antiga: {oldest_prod}\n"
+        r_2 = f"Data de validade mais próxima: {nearest_expired}\n"
+        r_3 = f"Empresa com maior quantidade de produtos estocados: {stock}\n"
+        report_all_rows = r_1 + r_2 + r_3
 
-        return report_string
+        return report_all_rows
 
     @classmethod
     def parse_date(cls, date_string):
