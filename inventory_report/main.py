@@ -1,8 +1,8 @@
 import sys
-from inventory.inventory_refactor import InventoryRefactor
-from importer.csv_importer import CsvImporter
-from importer.json_importer import JsonImporter
-from importer.xml_importer import XmlImporter
+from inventory_report.inventory.inventory_refactor import InventoryRefactor
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
 
 def main():
@@ -14,13 +14,15 @@ def main():
     file_extension = file_path.split(".")[-1]
 
     if file_extension == "csv":
-        InventoryRefactor(CsvImporter)
+        report_writer = InventoryRefactor(CsvImporter)
+        print(report_writer.import_data(file_path, type_of_report), end="")
     elif file_extension == "json":
-        InventoryRefactor(JsonImporter)
-    else:
-        InventoryRefactor(XmlImporter)
+        report_writer = InventoryRefactor(JsonImporter)
+        print(report_writer.import_data(file_path, type_of_report), end="")
 
-    print(file_path, type_of_report)
+    else:
+        report_writer = InventoryRefactor(XmlImporter)
+        print(report_writer.import_data(file_path, type_of_report), end="")
 
 
 if __name__ == "__main__":
