@@ -11,6 +11,3 @@ class CsvImporter(Importer):
         with open(file_name) as report_file:
             file_parsed_data = [*csv.DictReader(report_file)]
             return file_parsed_data
-
-
-# print(CsvImporter.import_data("inventory_report/data/inventory.csv"))
