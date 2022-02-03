@@ -4,7 +4,7 @@ from collections.abc import Iterator
 class InventoryIterator(Iterator):
     def __init__(self, registers):
         self.registers = registers
-        self.index = -1
+        self.index = 0
 
     def __next__(self):
         try:
@@ -13,5 +13,5 @@ class InventoryIterator(Iterator):
         except IndexError:
             raise StopIteration()
         else:
-            self.index -= 1
+            self.index += 1
             return current_value
